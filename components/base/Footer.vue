@@ -3,7 +3,7 @@
     <div class="container flex flex-direction-responsive">
       <div class="footer-item">
         <br>
-        <img src="~assets/logo/jfk1.svg" class="logo-footer" height="64" width="220" />
+        <img src="~assets/logo/jfk.svg" class="logo-footer" height="64" width="220" />
       </div>
       <div class="footer-item">
         <h3>Layanan Pelanggan</h3>

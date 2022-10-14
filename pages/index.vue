@@ -2,7 +2,7 @@
   <div>
     <section class="container">
       <br>
-      <Slider />
+      <Slider :images="slides" />
       <br>
       <div class="flex flex-direction-responsive">
         <div class="float-left category-grid">
@@ -49,7 +49,12 @@ export default {
   name: 'indexPage',
   data() {
     return {
-      listProduct: []
+      listProduct: [],
+      slides: [
+        'https://static.id.gtech.asia/prod/100003/20220922/5700F8C277A9329471891F4AED1AACAA.jpeg?x-oss-process=image/resize,w_2200/format,webp',
+        'https://static.id.gtech.asia/prod/100003/20210319/5D85211A437148C9CDC279244A24C49F.jpeg?x-oss-process=image/resize,w_2200/format,webp',
+        'https://static.id.gtech.asia/prod/100003/20210319/59850BC55972A8274BBB6D922A083C6C.jpeg?x-oss-process=image/resize,w_2200/format,webp',
+      ]
     }
   },
   mounted() {

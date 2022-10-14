@@ -41,9 +41,7 @@
           <p class="margin-0">Terjual: {{ product.sold }}</p>
           <div>
             <p>Quantity: {{ quantity }}</p>
-            <select style="padding: 6px 12px;
-              border: 1px solid lightgray;
-              border-radius: 8px;" v-model="quantity">
+            <select class="quantity-product" v-model="quantity">
               <option v-for="(qty, idx) in 8" :key="idx">{{ qty }}</option>
             </select>
           </div>
@@ -71,8 +69,8 @@
       <br>
       <br>
       <div class="product-grid">
-        <div style="text-align: center; margin-bottom: 20px;">
-          <span style="font-size: 20px; font-weight: 500; text-align: center;">Rekomendasi Untukmu</span>
+        <div class="align-center" style="margin-bottom: 20px;">
+          <span class="align-center" style="font-size: 20px; font-weight: 500; ">Rekomendasi Untukmu</span>
         </div>
         <div class="flex product-grid__container">
           <div v-for="(item, idx) in listProduct" :key="idx" class="product-grid__item">
@@ -142,6 +140,11 @@ export default {
 <style lang="scss" scoped>
 .product-image {
   width: 100%;
+}
+.quantity-product {
+  padding: 6px 12px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
 }
 .discount-label {
   margin-left: 8px;

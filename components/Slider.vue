@@ -1,28 +1,29 @@
 <template>
-<div class="container">
-  <span class="leftArrow" @click="prev()">&#10094;</span>
-  <div class="slider">
-    <div v-for="i in [currentIndex]" :key="i">
-      <img :src="currentImg" width="100%" />
+  <div class="relative slider-container">
+    <span class="left-arrow" @click="prev()">&#10094;</span>
+    <div class="slider">
+      <div v-for="i in [currentIndex]" :key="i">
+        <img :src="currentImg" width="100%" />
+      </div>
+    </div>
+    <span class="right-arrow" @click="next()">&#10095;</span>
+
+    <div class="circle">
     </div>
   </div>
-  <span class="rightArrow" @click="next()">&#10095;</span>
-
-  <div class="circle">
-  </div>
-</div>
 </template>
 
 <script>
 export default {
   name: 'Slider',
+  props: {
+    images: {
+      type: Array,
+      default: []
+    }
+  },
   data() {
     return {
-      images: [
-        'https://static.id.gtech.asia/prod/100003/20220922/5700F8C277A9329471891F4AED1AACAA.jpeg?x-oss-process=image/resize,w_2200/format,webp',
-        'https://static.id.gtech.asia/prod/100003/20210319/5D85211A437148C9CDC279244A24C49F.jpeg?x-oss-process=image/resize,w_2200/format,webp',
-        'https://static.id.gtech.asia/prod/100003/20210319/59850BC55972A8274BBB6D922A083C6C.jpeg?x-oss-process=image/resize,w_2200/format,webp',
-        ],
       timer: null,
       currentIndex: 0,
     }
@@ -35,7 +36,6 @@ export default {
       startSlide: function() {
         this.timer = setInterval(this.next, 4000);
       },
-
 
       next: function() {
         this.currentIndex += 1
@@ -55,38 +55,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  width: 100%;
+.slider-container {
   height: 400px;
-  border: 1px solid #cccccc;
-  margin: auto;
-  position: relative;
-  box-shadow: 0px 0px 2px #a3a3a3;
 }
-
-.container .slider {
+.slider {
   width: 100%;
   height: 100%;
-  position: relative;
   overflow: hidden;
-}
-
-.container .slider {
-  width: 100%;
-  height: 100%;
   position: absolute;
   cursor: pointer;
   z-index: 0;
   left: 0px;
   opacity: 0;
 }
-.container .slider{
+
+.slider{
   z-index: 1;
   opacity: 1;
   animation: imageAnimateOpacity 1s ease;
 }
 
-.container .leftArrow , .container .rightArrow {
+.left-arrow, .right-arrow {
   position: absolute;
   width: 30px;
   height: 30px;
@@ -105,16 +94,16 @@ export default {
   -ms-user-select: none;
   user-select: none;
 }
-.container >  span:hover {
+span:hover {
   background-color: #066c6c;
   transition: 0.2s;
 }
-.container .leftArrow {
+.left-arrow {
   left: -40px;
-  animation: leftArrow 0.5s ease;
+  animation: left-arrow 0.5s ease;
 }
 
-@keyframes leftArrow {
+@keyframes left-arrow {
   from {
     left: 0px;
     opacity: 0;
@@ -124,13 +113,14 @@ export default {
     left: -40px;
   }
 }
-.container .rightArrow {
+
+.right-arrow {
   right: -40px;
-  animation: rightArrow 0.5s ease;
+  animation: right-arrow 0.5s ease;
 
 }
 
-@keyframes rightArrow {
+@keyframes right-arrow {
   from {
     opacity: 0;
     right: 0px;
@@ -155,7 +145,7 @@ export default {
   border-radius: 100%;
   cursor: pointer;
 }
-.container .slider > img {
+.slider > img {
   position: absolute;
   bottom: 0px;
   right: 0px;
@@ -165,11 +155,15 @@ export default {
   cursor: pointer;
   background-color: white;
   opacity: 0.7;
-
 }
+
 @media screen and (max-width: 800px) {
-  .container {
-    width: 85%;
+  .slider-container {
+    height: 140px;
+  }
+
+  .right-arrow, .left-arrow {
+    display: none;
   }
 }
 </style>

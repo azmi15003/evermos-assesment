@@ -3,7 +3,7 @@
     <div class="container header-wrapper flex items-center">
       <div class="logo">
         <NuxtLink :to="`/`">
-          <img src="~assets/logo/jfk1.svg" height="32" />
+          <img src="~assets/logo/jfk.svg" height="32" />
         </NuxtLink>
       </div>
       <div>
